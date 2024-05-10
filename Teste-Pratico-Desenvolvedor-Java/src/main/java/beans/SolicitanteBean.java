@@ -1,4 +1,7 @@
+package beans;
+
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
 import entidades.Solicitante;
@@ -10,6 +13,19 @@ public class SolicitanteBean {
 
     private String nome;
 
+    // Injetando SolicitanteService via ManagedProperty
+    @ManagedProperty("#{solicitanteService}")
+    private SolicitanteService solicitanteService;
+
+    // Getter e Setter para SolicitanteService
+    public SolicitanteService getSolicitanteService() {
+        return solicitanteService;
+    }
+
+    public void setSolicitanteService(SolicitanteService solicitanteService) {
+        this.solicitanteService = solicitanteService;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -19,7 +35,6 @@ public class SolicitanteBean {
     }
 
     public String salvar() {
-        SolicitanteService solicitanteService = new SolicitanteService();
         Solicitante solicitante = new Solicitante();
         solicitante.setNome(nome);
         solicitanteService.criarSolicitante(solicitante);

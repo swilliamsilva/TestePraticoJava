@@ -84,6 +84,20 @@
             <artifactId>jsf-impl</artifactId>
             <version>2.2.9</version> <!-- Use a versão desejada -->
         </dependency>
+        <!-- Bean Validation (JSR 380) -->
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>2.0.1.Final</version>
+         </dependency>
+
+         <!-- CDI API (Contextos e Injeção de Dependência) -->
+         <dependency>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
+            <version>2.0</version>
+            <scope>provided</scope>
+         </dependency>
     </dependencies>
 
     <build>
