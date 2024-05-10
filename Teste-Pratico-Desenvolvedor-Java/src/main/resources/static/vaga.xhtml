@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<!-- Adicionar o favicon (caminho corrigido) -->
+    <link rel="icon" href="#{facesContext.externalContext.requestContextPath}/Teste-Pratico-Desenvolvedor-Java/src/main/resources/favicon.ico" type="image/x-icon" />
+<!-- vaga.xhtml -->
+<h:form>
+    <h:outputText value="Formulário de Vaga" />
+
+    <h:outputLabel value="Data de Início:" for="inicio" />
+    <h:inputText id="inicio" value="#{vagaBean.inicio}" />
+
+    <h:outputLabel value="Data de Fim:" for="fim" />
+    <h:inputText id="fim" value="#{vagaBean.fim}" />
+
+    <h:outputLabel value="Quantidade:" for="quantidade" />
+    <h:inputText id="quantidade" value="#{vagaBean.quantidade}" />
+
+    <h:commandButton value="Salvar" action="#{vagaBean.salvar}" />
+</h:form>
+</html>

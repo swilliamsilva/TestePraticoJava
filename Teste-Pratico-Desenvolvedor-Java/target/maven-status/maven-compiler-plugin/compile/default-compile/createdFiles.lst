@@ -1,0 +1,13 @@
+entidades\Agendamento.class
+repositorios\AgendamentoRepository.class
+controladores\SolicitanteController.class
+entidades\Vaga.class
+repositorios\VagaRepository.class
+entidades\Solicitante.class
+controladores\AgendamentoController.class
+controladores\VagaController.class
+repositorios\SolicitanteRepository.class
+com\teste\pratico\TestePraticoApplication.class
+servicos\SolicitanteService.class
+servicos\AgendamentoService.class
+servicos\VagaService.class
