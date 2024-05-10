@@ -39,18 +39,20 @@ spring.datasource.url=jdbc:hsqldb:file:C:\\Projetos\\Teste-Pratico-Desenvolvedor
 
 # Compile e Instale o Projeto:
 Use o comando Maven para compilar o projeto, ignorando os testes:
-bash
-digite
+
+No bash digite:
+
 mvn install -DskipTests
 
 Execute a Aplicação:
+
 Inicie o aplicativo com o seguinte comando:
-bash
-digite
+No bash digite:
 
 java -jar -Dserver.port=9494 target/Teste-Pratico-Desenvolvedor-Java-0.0.1-SNAPSHOT.jar
 
-Acesse a Aplicação:
+#Acesse a Aplicação:
+
 Pelo browse na porta 9494
 http://localhost:9494/index.html
 

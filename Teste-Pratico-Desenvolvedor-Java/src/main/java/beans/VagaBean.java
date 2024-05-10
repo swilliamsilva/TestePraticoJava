@@ -20,7 +20,8 @@ public class VagaBean implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Vaga vaga = new Vaga();
-    private List<Vaga> vagas;
+    @SuppressWarnings("unused")
+	private List<Vaga> vagas;
 
     @Autowired
     private VagaService vagaService;
