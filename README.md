@@ -42,19 +42,19 @@ Use o comando Maven para compilar o projeto, ignorando os testes:
 
 No bash digite:
 
-mvn install -DskipTests
+**mvn install -DskipTests
 
 Execute a Aplicação:
 
 Inicie o aplicativo com o seguinte comando:
 No bash digite:
 
-java -jar -Dserver.port=9494 target/Teste-Pratico-Desenvolvedor-Java-0.0.1-SNAPSHOT.jar
+**java -jar -Dserver.port=9494 target/Teste-Pratico-Desenvolvedor-Java-0.0.1-SNAPSHOT.jar
 
-#Acesse a Aplicação:
+# Acesse a Aplicação:
 
 Pelo browse na porta 9494
-http://localhost:9494/index.html
+**http://localhost:9494/index.html
 
 # Detalhes Técnicos Importantes
 Banco de Dados: O projeto utiliza HSQLDB como banco de dados, proporcionando uma solução rápida e leve.
