@@ -1,24 +1,49 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Formulário de Vaga</title>
+    <!-- Favicon atualizado -->
+    <link rel="icon" href="#{facesContext.externalContext.requestContextPath}/resources/favicon.ico" type="image/x-icon" />
+</h:head>
+<h:body>
+    <h:form id="vagaForm">
+        <p:panel header="Formulário de Vaga">
+            <p:messages autoUpdate="true" />
 
-<!-- Adicionar o favicon (caminho corrigido) -->
-    <link rel="icon" href="#{facesContext.externalContext.requestContextPath}/Teste-Pratico-Desenvolvedor-Java/src/main/resources/favicon.ico" type="image/x-icon" />
-<!-- vaga.xhtml -->
-<h:form>
-    <h:outputText value="Formulário de Vaga" />
+            <p:outputLabel value="Data de Início:" for="inicio" />
+            <p:calendar id="inicio" value="#{vagaBean.vaga.inicio}" pattern="dd/MM/yyyy" />
 
-    <h:outputLabel value="Data de Início:" for="inicio" />
-    <h:inputText id="inicio" value="#{vagaBean.inicio}" />
+            <p:outputLabel value="Data de Fim:" for="fim" />
+            <p:calendar id="fim" value="#{vagaBean.vaga.fim}" pattern="dd/MM/yyyy" />
 
-    <h:outputLabel value="Data de Fim:" for="fim" />
-    <h:inputText id="fim" value="#{vagaBean.fim}" />
+            <p:outputLabel value="Quantidade:" for="quantidade" />
+            <p:inputNumber id="quantidade" value="#{vagaBean.vaga.quantidade}" minValue="1" />
 
-    <h:outputLabel value="Quantidade:" for="quantidade" />
-    <h:inputText id="quantidade" value="#{vagaBean.quantidade}" />
+            <p:commandButton value="Salvar" action="#{vagaBean.salvar}" update="vagaForm, listaVagas" />
+        </p:panel>
 
-    <h:commandButton value="Salvar" action="#{vagaBean.salvar}" />
-</h:form>
+        <h2>Lista de Vagas</h2>
+        <p:dataTable id="listaVagas" value="#{vagaBean.vagas}" var="vaga">
+            <p:column headerText="ID">
+                <h:outputText value="#{vaga.id}" />
+            </p:column>
+            <p:column headerText="Início">
+                <h:outputText value="#{vaga.inicio}" />
+            </p:column>
+            <p:column headerText="Fim">
+                <h:outputText value="#{vaga.fim}" />
+            </p:column>
+            <p:column headerText="Quantidade">
+                <h:outputText value="#{vaga.quantidade}" />
+            </p:column>
+            <p:column headerText="Ações">
+                <p:commandButton value="Excluir" action="#{vagaBean.deletar(vaga.id)}" update="vagaForm, listaVagas" />
+            </p:column>
+        </p:dataTable>
+    </h:form>
+</h:body>
 </html>

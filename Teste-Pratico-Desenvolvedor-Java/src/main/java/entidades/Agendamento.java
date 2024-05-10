@@ -14,8 +14,16 @@ public class Agendamento {
     private Long id;
 
     private LocalDate data;
-    private String numero;
-    private String motivo;
+    private String hora; // Adicionado o campo hora
+
+    // Getters e Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public LocalDate getData() {
         return data;
@@ -25,21 +33,12 @@ public class Agendamento {
         this.data = data;
     }
 
-	public String getNumero() {
-		return numero;
-	}
+    public String getHora() {
+        return hora;
+    }
 
-	public void setNumero(String numero) {
-		this.numero = numero;
-	}
-
-	public String getMotivo() {
-		return motivo;
-	}
-
-	public void setMotivo(String motivo) {
-		this.motivo = motivo;
-	}
-
-    // Outros métodos (getters, setters, etc.)
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
 }
+

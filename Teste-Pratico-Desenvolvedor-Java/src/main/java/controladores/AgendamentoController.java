@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import entidades.Agendamento;
@@ -22,9 +20,9 @@ public class AgendamentoController {
 
     @GetMapping("/agendamentos")
     public String listarAgendamentos(
-        @RequestParam(required = false) LocalDate inicio,
-        @RequestParam(required = false) LocalDate fim,
-        Model model) {
+            @RequestParam(required = false) LocalDate inicio,
+            @RequestParam(required = false) LocalDate fim,
+            Model model) {
 
         if (inicio == null) {
             inicio = LocalDate.now();
@@ -33,18 +31,31 @@ public class AgendamentoController {
         if (fim == null) {
             fim = LocalDate.now().plusDays(7);
         }
-		return null;
 
-  //      List<Agendamento> agendamentos = agendamentoService.buscarAgendamentos(inicio, fim);
- //       model.addAttribute("agendamentos", agendamentos);
+        // Verificação de datas retroativas
+        if (inicio.isBefore(LocalDate.now())) {
 
-  //      return "agendamentos";
-    }
+            model.addAttribute("erro", "A data de início não pode ser retroativa. Por favor, corrija a data.");
+            return "erro";
+        }
 
-    @PostMapping("/agendamento")
-    public String criarAgendamento(@RequestBody Agendamento agendamento, Model model) {
-        agendamentoService.criarAgendamento(agendamento);
-        model.addAttribute("mensagem", "Agendamento criado com sucesso!");
-        return "resultado";
+        List<Agendamento> agendamentos = agendamentoService.buscarAgendamentos(inicio, fim);
+
+
+        int totalVagas = agendamentoService.calcularTotalVagas(inicio, fim);
+        int totalAgendamentos = agendamentos.size();
+
+        if (totalAgendamentos >= totalVagas) {
+
+            model.addAttribute("erro", "Não há vagas disponíveis para o período informado. Por favor, escolha um próximo período.");
+            return "erro";
+        }
+
+        model.addAttribute("agendamentos", agendamentos);
+        
+
+        model.addAttribute("mensagem", "Há vagas disponíveis para o período informado.");
+
+        return "agendamentos";
     }
 }

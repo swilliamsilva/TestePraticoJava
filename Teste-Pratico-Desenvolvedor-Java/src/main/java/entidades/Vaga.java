@@ -1,62 +1,65 @@
 package entidades;
 
 import java.time.LocalDate;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.*;
 
 @Entity
 public class Vaga {
- @Id
- @GeneratedValue(strategy = GenerationType.IDENTITY)
- private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
- private LocalDate inicio;
- private LocalDate fim;
- private Integer quantidade;
+    @NotNull(message = "A data de início é obrigatória")
+    private LocalDate inicio;
 
- // Construtores
- public Vaga() {
- }
+    @NotNull(message = "A data de fim é obrigatória")
+    private LocalDate fim;
 
- public Vaga(LocalDate inicio, LocalDate fim, Integer quantidade) {
-     this.inicio = inicio;
-     this.fim = fim;
-     this.quantidade = quantidade;
- }
+    @NotNull
+    @Min(value = 1, message = "A quantidade deve ser pelo menos 1")
+    private Integer quantidade;
 
- // Getters e Setters
- public Long getId() {
-     return id;
- }
+    // Construtores
+    public Vaga() {
+    }
 
- public void setId(Long id) {
-     this.id = id;
- }
+    public Vaga(LocalDate inicio, LocalDate fim, Integer quantidade) {
+        this.inicio = inicio;
+        this.fim = fim;
+        this.quantidade = quantidade;
+    }
 
- public LocalDate getInicio() {
-     return inicio;
- }
+    // Getters e Setters
+    public Long getId() {
+        return id;
+    }
 
- public void setInicio(LocalDate inicio) {
-     this.inicio = inicio;
- }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
- public LocalDate getFim() {
-     return fim;
- }
+    public LocalDate getInicio() {
+        return inicio;
+    }
 
- public void setFim(LocalDate fim) {
-     this.fim = fim;
- }
+    public void setInicio(LocalDate inicio) {
+        this.inicio = inicio;
+    }
 
- public Integer getQuantidade() {
-     return quantidade;
- }
+    public LocalDate getFim() {
+        return fim;
+    }
 
- public void setQuantidade(Integer quantidade) {
-     this.quantidade = quantidade;
- }
+    public void setFim(LocalDate fim) {
+        this.fim = fim;
+    }
+
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
+    }
 }

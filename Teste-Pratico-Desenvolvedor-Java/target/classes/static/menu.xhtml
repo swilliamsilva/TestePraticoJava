@@ -1,22 +1,28 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>Navegação</title>
-	<!-- Adicionar o favicon (caminho corrigido) -->
-    <link rel="icon" href="#{facesContext.externalContext.requestContextPath}/Teste-Pratico-Desenvolvedor-Java/src/main/resources/favicon.ico" type="image/x-icon" />
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <title>Menu Principal</title>
+    <!-- Adicionar o favicon -->
+    <link rel="icon" href="#{facesContext.externalContext.requestContextPath}/resources/favicon.ico" type="image/x-icon" />
 </h:head>
 <h:body>
+    <h:form id="menuForm">
+        <p:panel header="Menu Principal">
+            <p:commandLink value="Produtos" action="produto.xhtml" icon="pi pi-box" />
 
-	<h:form>
-		<h:panelGrid columns="1">
-			<h:commandLink value="Produtos" action="produto" />
-			<h:commandLink value="Login" action="login" />
-		</h:panelGrid>
-	</h:form>
+            <p:commandLink value="Login" action="login.xhtml" icon="pi pi-sign-in" />
 
+            <p:commandLink value="Vagas" action="vaga.xhtml" icon="pi pi-calendar" />
+
+            <p:commandLink value="Solicitantes" action="solicitante.xhtml" icon="pi pi-users" />
+
+            <p:commandLink value="Agendamentos" action="agendamento.xhtml" icon="pi pi-clock" />
+        </p:panel>
+    </h:form>
 </h:body>
 </html>

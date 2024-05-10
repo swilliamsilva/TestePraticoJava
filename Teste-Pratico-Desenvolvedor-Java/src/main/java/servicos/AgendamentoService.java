@@ -50,4 +50,16 @@ public class AgendamentoService {
             .filter(a -> !a.getData().isBefore(inicio) && !a.getData().isAfter(fim)) // Use getData()
             .collect(Collectors.toList()); // Use collect(Collectors.toList())
     }
+    public Agendamento salvar(Agendamento agendamento) {
+        return agendamentoRepository.save(agendamento);
+    }
+
+    public Agendamento buscarPorId(Long id) {
+        return agendamentoRepository.findById(id).orElse(null);
+    }
+
+    public void deletar(Long id) {
+        agendamentoRepository.deleteById(id);
+    }
+
 }

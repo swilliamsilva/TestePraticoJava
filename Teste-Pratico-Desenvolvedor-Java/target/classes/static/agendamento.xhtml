@@ -1,20 +1,34 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
-<!-- Adicionar o favicon (caminho corrigido) -->
-     <link rel="icon" href="#{facesContext.externalContext.requestContextPath}/Teste-Pratico-Desenvolvedor-Java/src/main/resources/favicon.ico" type="image/x-icon" />
-<!-- agendamento.xhtml -->
-<h:form>
-    <h:outputText value="Formulário de Agendamento" />
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Formulário de Agendamento</title>
+    <!-- Caminho atualizado para o favicon -->
+    <link rel="icon" href="#{facesContext.externalContext.requestContextPath}/resources/favicon.ico" type="image/x-icon" />
+</h:head>
+<h:body>
+    <h:form>
+        <p:panel header="Formulário de Agendamento">
+            <p:outputLabel value="Data:" for="data" />
+            <p:calendar id="data" value="#{agendamentoBean.data}" pattern="dd/MM/yyyy" />
 
-    <h:outputLabel value="Data:" for="data" />
-    <h:inputText id="data" value="#{agendamentoBean.data}" />
+            <p:outputLabel value="Hora:" for="hora" />
+            <p:inputMask id="hora" value="#{agendamentoBean.hora}" mask="99:99" />
 
-    <h:outputLabel value="Hora:" for="hora" />
-    <h:inputText id="hora" value="#{agendamentoBean.hora}" />
+            <p:commandButton value="Salvar" action="#{agendamentoBean.salvar}" update="@form" />
+        </p:panel>
 
-    <h:commandButton value="Salvar" action="#{agendamentoBean.salvar}" />
-</h:form>
+        <p:messages autoUpdate="true" /> <!-- Exibir mensagens de validação e erro -->
+
+        <h2>Agendamentos</h2>
+        <ul>
+            <ui:repeat var="agendamento" value="#{agendamentoBean.agendamentos}">
+                <li>Data: #{agendamento.data}, Hora: #{agendamento.hora}</li>
+            </ui:repeat>
+        </ul>
+    </h:form>
+</h:body>
 </html>
