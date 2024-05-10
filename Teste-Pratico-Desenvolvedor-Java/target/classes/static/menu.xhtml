@@ -9,19 +9,25 @@
     <title>Menu Principal</title>
     <!-- Adicionar o favicon -->
     <link rel="icon" href="#{facesContext.externalContext.requestContextPath}/resources/favicon.ico" type="image/x-icon" />
+    <style>
+        .panel-custom {
+            background-color: yellow;
+            color: black;
+        }
+    </style>
 </h:head>
 <h:body>
     <h:form id="menuForm">
-        <p:panel header="Menu Principal">
-            <p:commandLink value="Produtos" action="produto.xhtml" icon="pi pi-box" />
+        <p:panel header="Menu Principal" styleClass="panel-custom">
+            <p:commandLink label="Produtos" value="Produtos" action="produto.xhtml" icon="pi pi-box" style="color:black;" />
 
-            <p:commandLink value="Login" action="login.xhtml" icon="pi pi-sign-in" />
+            <p:commandLink label="Login" value="Login" action="login.xhtml" icon="pi pi-sign-in" style="color:black;" />
 
-            <p:commandLink value="Vagas" action="vaga.xhtml" icon="pi pi-calendar" />
+            <p:commandLink label="Vagas" value="Vagas" action="vaga.xhtml" icon="pi pi-calendar" style="color:black;" />
 
-            <p:commandLink value="Solicitantes" action="solicitante.xhtml" icon="pi pi-users" />
+            <p:commandLink label="Solicitantes" value="Solicitantes" action="solicitante.xhtml" icon="pi pi-users" style="color:black;" />
 
-            <p:commandLink value="Agendamentos" action="agendamento.xhtml" icon="pi pi-clock" />
+            <p:commandLink label="Agendamentos" value="Agendamentos" action="agendamento.xhtml" icon="pi pi-clock" style="color:black;" />
         </p:panel>
     </h:form>
 </h:body>
