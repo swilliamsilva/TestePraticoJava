@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Vaga</title>
+    <link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon" />
+</head>
+<body>
+    <form th:action="@{/vaga/salvar}" th:object="${vaga}" method="post" id="vagaForm">
+        <div>
+            <h3>Vaga</h3>
+
+            <!-- Mensagens de erro ou confirmação -->
+            <div th:if="${not #lists.isEmpty(messages)}">
+                <ul th:each="msg : ${messages}">
+                    <li th:text="${msg}"></li>
+                </ul>
+            </div>
+
+            <div>
+                <label for="inicio">Data de Início:</label>
+                <input type="date" id="inicio" th:field="*{inicio}" />
+            </div>
+
+            <div>
+                <label for="fim">Data de Fim:</label>
+                <input type="date" id="fim" th:field="*{fim}" />
+            </div>
+
+            <div>
+                <label for="quantidade">Quantidade:</label>
+                <input type="number" id="quantidade" th:field="*{quantidade}" min="1" />
+            </div>
+
+            <button type="submit">Salvar</button>
+        </div>
+    </form>
+
+    <h2>Lista de Vagas</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Início</th>
+                <th>Fim</th>
+                <th>Quantidade</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody th:each="vaga : ${vagas}">
+            <tr>
+                <td th:text="${vaga.id}"></td>
+                <td th:text="${#dates.format(vaga.inicio, 'dd/MM/yyyy')}"></td>
+                <td th:text="${#dates.format(vaga.fim, 'dd/MM/yyyy')}"></td>
+                <td th:text="${vaga.quantidade}"></td>
+                <td>
+                    <form th:action="@{/vaga/deletar/{id}(id=${vaga.id})}" method="post">
+                        <button type="submit">Excluir</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

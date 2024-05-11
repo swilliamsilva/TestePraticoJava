@@ -7,6 +7,7 @@ import javax.faces.bean.ViewScoped;
 import entidades.Solicitante;
 import servicos.SolicitanteService;
 
+@SuppressWarnings("deprecation")
 @ManagedBean
 @ViewScoped
 public class SolicitanteBean {

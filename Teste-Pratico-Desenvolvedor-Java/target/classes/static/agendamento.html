@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Agendamento</title>
+    <link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon" />
+</head>
+<body>
+    <form th:action="@{/agendamento/salvar}" th:object="${agendamento}" method="post">
+        <div>
+            <label for="data">Data:</label>
+            <input type="text" id="data" th:field="*{data}" placeholder="dd/MM/yyyy" />
+        </div>
+
+        <div>
+            <label for="hora">Hora:</label>
+            <input type="text" id="hora" th:field="*{hora}" placeholder="HH:mm" />
+        </div>
+
+        <button type="submit">Salvar</button>
+    </form>
+
+    <!-- Exibir mensagens de validação e erro -->
+    <div th:if="${not #lists.isEmpty(messages)}">
+        <ul th:each="msg : ${messages}">
+            <li th:text="${msg}"></li>
+        </ul>
+    </div>
+
+    <h2>Agendamentos</h2>
+    <ul>
+        <li th:each="agendamento : ${agendamentos}">
+            Data: <span th:text="${agendamento.data}"></span>, Hora: <span th:text="${agendamento.hora}"></span>
+        </li>
+    </ul>
+</body>
+</html>

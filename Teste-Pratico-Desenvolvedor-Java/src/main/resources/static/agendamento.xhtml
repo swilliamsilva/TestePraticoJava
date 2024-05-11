@@ -1,34 +1,46 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml" 
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      template="/templates/layout.xhtml">
+
 <h:head>
-    <title>Formulário de Agendamento</title>
-    <!-- Caminho atualizado para o favicon -->
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
     <link rel="icon" href="#{facesContext.externalContext.requestContextPath}/resources/favicon.ico" type="image/x-icon" />
+    **Unknown at rule @CHARSET
+    **<h:outputStylesheet library="css" name="estilos.css"/>
+    <title>Agendamento</title>
 </h:head>
 <h:body>
-    <h:form>
-        <p:panel header="Formulário de Agendamento">
-            <p:outputLabel value="Data:" for="data" />
-            <p:calendar id="data" value="#{agendamentoBean.data}" pattern="dd/MM/yyyy" />
+    <ui:define name="conteudo">
+        <h:form styleClass="amarelo-claro">
+        <ui:define name="conteudo">
+            <p:panel header="Formulário de Agendamento" style="border: 1px solid #000;">
+                <ui:define name="conteudo">
+                <p:outputLabel for="data" value="Data:" />
+                <p:calendar id="data" value="#{agendamentoBean.data}" pattern="dd/MM/yyyy" styleClass="input-border" />
 
-            <p:outputLabel value="Hora:" for="hora" />
-            <p:inputMask id="hora" value="#{agendamentoBean.hora}" mask="99:99" />
+                <p:outputLabel for="hora" value="Hora:" />
+                <p:inputMask id="hora" value="#{agendamentoBean.hora}" mask="99:99" styleClass="input-border" />
 
-            <p:commandButton value="Salvar" action="#{agendamentoBean.salvar}" update="@form" />
-        </p:panel>
+                <p:commandButton value="Salvar" action="#{agendamentoBean.salvar}" update="@form" />
+                <p:commandButton value="Alterar" action="#{agendamentoBean.alterar}" update="@form" />
+                <p:commandButton value="Deletar" action="#{agendamentoBean.deletar}" update="@form" />
+                <p:commandButton value="Consultar" action="#{agendamentoBean.consultar}" update="@form" />
+                <p:commandButton value="Listar" action="#{agendamentoBean.listar}" update="@form" />
+            </p:panel>
 
-        <p:messages autoUpdate="true" /> <!-- Exibir mensagens de validação e erro -->
+            <p:messages autoUpdate="true" style="color: red;" />
 
-        <h2>Agendamentos</h2>
-        <ul>
+            <h2>Agendamentos</h2>
+            <ui:define name="conteudo">
             <ui:repeat var="agendamento" value="#{agendamentoBean.agendamentos}">
-                <li>Data: #{agendamento.data}, Hora: #{agendamento.hora}</li>
+                <p>#{agendamento.data} às #{agendamento.hora}</p>
             </ui:repeat>
-        </ul>
-    </h:form>
+        </h:form>
+    </ui:define>
 </h:body>
 </html>

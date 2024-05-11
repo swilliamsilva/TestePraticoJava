@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Solicitante</title>
+    <link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon" />
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <form th:action="@{/solicitante/salvar}" method="post" id="solicitanteForm">
+        <div>
+            <h3>Solicitante</h3>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" th:field="*{nome}" required />
+
+            <button type="submit">Salvar</button>
+        </div>
+    </form>
+
+    <!-- Mensagens de erro ou confirmação -->
+    <div th:if="${not #lists.isEmpty(messages)}">
+        <ul th:each="msg : ${messages}">
+            <li th:text="${msg}"></li>
+        </ul>
+    </div>
+
+    <h2>Lista de Solicitantes</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+            </tr>
+        </thead>
+        <tbody th:each="solicitante : ${solicitantes}">
+            <tr>
+                <td th:text="${solicitante.id}"></td>
+                <td th:text="${solicitante.nome}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -6,6 +6,7 @@ import java.time.LocalTime;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+@SuppressWarnings("deprecation")
 @ManagedBean
 @ViewScoped
 public class AgendamentoBean {

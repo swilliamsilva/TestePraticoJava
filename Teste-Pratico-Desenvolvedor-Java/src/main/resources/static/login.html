@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon" />
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <form th:action="@{/login}" method="post" id="loginForm">
+        <div>
+            <h3>Login</h3>
+
+            <!-- Mensagens de erro ou confirmação -->
+            <div th:if="${not #lists.isEmpty(messages)}">
+                <ul th:each="msg : ${messages}">
+                    <li th:text="${msg}"></li>
+                </ul>
+            </div>
+
+            <div>
+                <label for="usuario">Usuário:</label>
+                <input type="text" id="usuario" th:name="usuario" required />
+            </div>
+
+            <div>
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" th:name="senha" required />
+            </div>
+
+            <div>
+                <button type="submit">Entrar</button>
+                <button type="button" th:onclick="'location.href=\'' + @{/recuperar-senha} + '\''">Recuperar Senha</button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

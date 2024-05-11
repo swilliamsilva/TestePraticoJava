@@ -1,33 +1,43 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
-<h:head>
-    <title>Teste Prático Desenvolvedor Java</title>
-    <link rel="icon" href="#{facesContext.externalContext.requestContextPath}/resources/favicon.ico" type="image/x-icon" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>TestePráticoJava</title>
+    <link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon" />
     <style>
-        .header {
-            text-align: center;
-            padding: 20px;
-            background-color: lightgrey;
+        .verde-claro {
+            color: lightgreen; /* Cor verde-claro */
         }
-        .content {
+        .header, .footer {
+            background-color: lightgrey;
             text-align: center;
-            margin-top: 30px;
+            padding: 10px;
+        }
+        .corpo {
+            padding: 20px;
         }
     </style>
-</h:head>
-<h:body style="background-color: lightyellow;">
+</head>
+<body style="background-color: lightyellow;">
     <div class="header">
-        <h1>Bem-vindo ao Teste Prático de Desenvolvimento Java</h1>
+        <a th:href="@{/vaga}">Vagas</a>
+        <a th:href="@{/solicitante}">Solicitantes</a>
+        <a th:href="@{/agendamento}">Agendamentos</a>
     </div>
-
-    <div class="content">
-        <p style="font-size: 16px;">Olá! Seja bem-vindo ao seu Teste Prático de Desenvolvimento Java.<br/>Boa sorte!</p>
-        <p:commandButton value="Acessar Menu" action="menu.xhtml" icon="pi pi-arrow-right" />
-    </div>
-</h:body>
+    <p style="color: black;">Teste Prático Desenvolvedor Java</p>
+    <p style="color: blue;">Para testar o codigo chame: </p>
+    <p style="color: green;">http://localhost:9494/index.html</p>
+    <p style="color: red;">http://localhost:9494/index.xhtml</p>
+    <p style="color: blue;">http://localhost:9494/agendamento.html</p>
+    <p style="color: blue;">http://localhost:9494/agendamento.xhtml</p>
+    <p style="color: green;"> http://localhost:9494/vaga.xhtml</p>
+    <p style="color: red;"> http://localhost:9494/vaga.html</p>    
+    <p style="color: blue;"> http://localhost:9494/solicitante.xhtml</p> 
+    <p style="color: green;"> http://localhost:9494/solicitante.html</p> 
+    <p style="color: black;"> Compilação: 01 </p> 
+        
+    
+    <div class="footer">Versão 0.1</div>
+    
+</body>
 </html>

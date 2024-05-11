@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+template="/templates/layout.xhtml"
+>
 
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Teste Prático Desenvolvedor Java</title>
-    <!-- Adicionar o favicon -->
-    <link rel="icon" href="#{facesContext.externalContext.requestContextPath}/resources/favicon.ico" type="image/x-icon" />
+     
+    <meta charset="UTF-8" />
+    <title>TestePráticoJava</title>
+    <link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon" />
     <style>
         .verde-claro {
             color: lightgreen; /* Cor verde-claro */
@@ -23,14 +29,13 @@
         }
     </style>
 </head>
-
 <body style="background-color: lightyellow;">
-    <h:form>
-        <h:outputText value="Menu de Acesso" />
-        <h:commandLink value="Vagas" action="vaga.xhtml" />
-        <h:commandLink value="Solicitantes" action="solicitante.xhtml" />
-        <h:commandLink value="Agendamentos" action="agendamento.xhtml" />
-    </h:form>
+    <div class="header">
+        <a th:href="@{/vaga}">Vagas</a>
+        <a th:href="@{/solicitante}">Solicitantes</a>
+        <a th:href="@{/agendamento}">Agendamentos</a>
+    </div>
     <p style="color: black;">Testando</p>
+    <div class="footer">Rodapé</div>
 </body>
 </html>
