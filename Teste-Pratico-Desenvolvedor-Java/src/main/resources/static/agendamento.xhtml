@@ -14,18 +14,21 @@
     <ui:outputStylesheet name="css/estilos.css"/>
     <title>Agendamento</title>
 </ui:head>
+
 <ui:body>
     <ui:define name="conteudo">
         <ui:form styleClass="amarelo-claro">
             <ui:panel header="Formulário de Agendamento" style="border: 1px solid #000;">
             
-            
-                <ui:outputLabel for="data" value="Data:" />
-                <ui:calendar id="data" value="#{agendamentoBean.data}" pattern="dd/MM/yyyy" styleClass="input-border" />
-            
-            
-                <ui:outputLabel  for="hora" value="Hora:" />
-                <ui:inputMask id="hora" value="#{agendamentoBean.hora}" mask="99:99" styleClass="input-border" />
+                <div>
+                    <label for="data">Data:</label>
+                    <input type="text" id="data" th:field="*{data}" placeholder="dd/MM/yyyy" class="input-border" />
+                </div>
+
+                <div>
+                    <label for="hora">Hora:</label>
+                    <input type="text" id="hora" th:field="*{hora}" placeholder="HH:mm" class="input-border" />
+                </div>
 
                 <ui:commandButton value="Salvar" action="#{agendamentoBean.salvar}" update="@form" styleClass="button-style" />
                 <ui:commandButton value="Alterar" action="#{agendamentoBean.alterar}" update="@form" styleClass="button-style" />
@@ -38,20 +41,15 @@
             <h2>Agendamentos</h2>
             <ui:repeat value="#{agendamentoBean.agendamentos}" var="agendamento">
                 <div>
-                     <ul>
-                        
-                           <li>Data : #{agendamento.data} às 
-                                 #{agendamento.hora} horas.
-                           </li>
-                     </ul>
-                     <p></p>
-                     <p></p>
-                         <button type="submit">Salvar</button>
-                         <button type="submit">Alterar</button>
-                         <button type="submit">Deletar</button>
-                         <button type="submit">Consultar</button>
-                         <button type="submit">Listar</button>
-                 </div>
+                    <ul>
+                        <li>Data : #{agendamento.data} às #{agendamento.hora} horas.</li>
+                    </ul>
+                    <button type="submit">Salvar</button>
+                    <button type="submit">Alterar</button>
+                    <button type="submit">Deletar</button>
+                    <button type="submit">Consultar</button>
+                    <button type="submit">Listar</button>
+                </div>
             </ui:repeat>
         </ui:form>
     </ui:define>

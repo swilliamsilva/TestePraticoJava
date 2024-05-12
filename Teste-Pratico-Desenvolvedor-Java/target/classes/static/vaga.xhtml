@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" 
-xmlns:h="http://java.sun.com/jsf/html"
-xmlns:f="http://java.sun.com/jsf/core"
-xmlns:p="http://primefaces.org/ui"
-xmlns:ui="http://java.sun.com/jsf/facelets"
-template="/templates/layout.xhtml">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:th="http://www.thymeleaf.org"
+      template="/templates/layout.xhtml">
+
 <h:head>
     <title>Vaga</title>
     <!-- Favicon atualizado -->
     <link rel="icon" href="#{facesContext.externalContext.requestContextPath}/resources/favicon.ico" type="image/x-icon" />
 </h:head>
+
 <h:body>
     <h:form id="vagaForm">
         <p:panel header="Formulário de Vaga">
-        <ui:insert name="conteudo">
-        Informações do conteúdo 
-        </ui:insert>
+            <ui:insert name="conteudo">
+                Informações do conteúdo 
+            </ui:insert>
             <p:messages autoUpdate="true" />
 
             <p:outputLabel value="Data de Início:" for="inicio" />
@@ -54,5 +57,37 @@ template="/templates/layout.xhtml">
             </p:column>
         </p:dataTable>
     </h:form>
+
+    <div>
+        <h3>Vaga</h3>
+
+        <!-- Mensagens de erro ou confirmação -->
+        <div th:if="${not #lists.isEmpty(messages)}">
+            <ul th:each="msg : ${messages}">
+                <li th:text="${msg}"></li>
+            </ul>
+        </div>
+
+        <div>
+            <label for="inicio">Data de Início:</label>
+            <input type="date" id="inicio" th:field="*{inicio}" />
+        </div>
+
+        <div>
+            <label for="fim">Data de Fim:</label>
+            <input type="date" id="fim" th:field="*{fim}" />
+        </div>
+
+        <div>
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" th:field="*{quantidade}" min="1" />
+        </div>
+
+        <button type="submit">Salvar</button>
+        <button type="submit">Alterar</button>
+        <button type="submit">Deletar</button>
+        <button type="submit">Consultar</button>
+        <button type="submit">Listar</button>
+    </div>
 </h:body>
 </html>

@@ -1,30 +1,43 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
     <title>TestePráticoJava</title>
-    <link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon"/>
+    <link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon" />
     <style>
         .verde-claro {
             color: lightgreen; /* Cor verde-claro */
         }
-
         .header, .footer {
             background-color: lightgrey;
             text-align: center;
             padding: 10px;
         }
-
         .corpo {
             padding: 20px;
         }
     </style>
 </head>
 <body style="background-color: lightyellow;">
-<div class="header">
-    <a href="/login.xhtml">Login</a>
-</div>
-<p style="color: black;">Teste Prático Desenvolvedor Java</p>
-<div class="footer">Versão 0.1</div>
+    <div class="header">
+        <a th:href="@{/vaga}">Vagas</a>
+        <a th:href="@{/solicitante}">Solicitantes</a>
+        <a th:href="@{/agendamento}">Agendamentos</a>
+    </div>
+    <p style="color: black;">Teste Prático Desenvolvedor Java</p>
+    <p style="color: blue;">Para testar o codigo chame: </p>
+    <p style="color: green;">http://localhost:9494/index.html</p>
+    <p style="color: red;">http://localhost:9494/index.xhtml</p>
+    <p style="color: blue;">http://localhost:9494/agendamento.html</p>
+    <p style="color: blue;">http://localhost:9494/agendamento.xhtml</p>
+    <p style="color: green;"> http://localhost:9494/vaga.xhtml</p>
+    <p style="color: red;"> http://localhost:9494/vaga.html</p>    
+    <p style="color: blue;"> http://localhost:9494/solicitante.xhtml</p> 
+    <p style="color: green;"> http://localhost:9494/solicitante.html</p> 
+    <p style="color: black;"> Compilação: 01 </p> 
+        
+    
+    <div class="footer">Versão 0.1</div>
+    
 </body>
 </html>
