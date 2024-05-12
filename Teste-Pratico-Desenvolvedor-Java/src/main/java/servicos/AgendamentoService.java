@@ -41,4 +41,9 @@ public class AgendamentoService {
         int totalVagasDisponiveis = vagaRepository.findAll().size();
         return totalVagasDisponiveis - totalVagasUsadas;
     }
+
+    // Método para injetar um repositório mock para testes
+    public void setAgendamentoRepository(AgendamentoRepository repositoryMock) {
+        this.agendamentoRepository = repositoryMock;
+    }
 }
