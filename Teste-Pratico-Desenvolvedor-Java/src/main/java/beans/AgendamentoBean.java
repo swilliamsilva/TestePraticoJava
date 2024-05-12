@@ -1,8 +1,6 @@
 package beans;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -12,8 +10,9 @@ import javax.faces.bean.ViewScoped;
 public class AgendamentoBean {
 
     private LocalDate data;
-    private LocalTime hora;
+    private String hora;
 
+    // Getters e setters
     public LocalDate getData() {
         return data;
     }
@@ -22,17 +21,11 @@ public class AgendamentoBean {
         this.data = data;
     }
 
-    public LocalTime getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(LocalTime hora) {
+    public void setHora(String hora) {
         this.hora = hora;
-    }
-
-    // Método para salvar o agendamento
-    public String salvar() {
-        // Implemente a lógica para salvar o agendamento no banco de dados aqui
-        return "sucesso"; // Redireciona para uma página de sucesso após salvar
     }
 }

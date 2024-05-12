@@ -1,31 +1,20 @@
 package beans;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.ViewScoped;
+import javax.inject.Named;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 
 import entidades.Solicitante;
 import servicos.SolicitanteService;
 
-@SuppressWarnings("deprecation")
-@ManagedBean
+@Named
 @ViewScoped
 public class SolicitanteBean {
 
     private String nome;
 
-    // Injetando SolicitanteService via ManagedProperty
-    @ManagedProperty("#{solicitanteService}")
+    @Inject
     private SolicitanteService solicitanteService;
-
-    // Getter e Setter para SolicitanteService
-    public SolicitanteService getSolicitanteService() {
-        return solicitanteService;
-    }
-
-    public void setSolicitanteService(SolicitanteService solicitanteService) {
-        this.solicitanteService = solicitanteService;
-    }
 
     public String getNome() {
         return nome;

@@ -1,47 +1,68 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" 
-xmlns:h="http://java.sun.com/jsf/html"
-xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://xmlns.jcp.org/jsf/html"
+xmlns:f="http://xmlns.jcp.org/jsf/core"
 xmlns:p="http://primefaces.org/ui"
-xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 template="/templates/layout.xhtml"
 >      
-      <!-- src/main/resources/templates/fragments/menu.html -->
-      <div th:fragment="menu">
-           <!-- Conteúdo do menu aqui -->
-     </div>
-
-<!-- Outros fragmentos -->
-      
-<h:head>
-        <ui:insert name="conteudo">
-        Informações do conteúdo 
-        </ui:insert>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-    <title>Menu Principal</title>
-    <!-- Adicionar o favicon -->
-    <link rel="icon" href="#{facesContext.externalContext.requestContextPath}/resources/favicon.ico" type="image/x-icon" />
-    <style>
-        .panel-custom {
-            background-color: yellow;
-            color: black;
-        }
-    </style>
-</h:head>
-<h:body>
-    <h:form id="menuForm">
-        <p:panel header="Menu Principal" styleClass="panel-custom">
-            <p:commandLink label="Produtos" value="Produtos" action="produto.xhtml" icon="pi pi-box" style="color:black;" />
-
-            <p:commandLink label="Login" value="Login" action="login.xhtml" icon="pi pi-sign-in" style="color:black;" />
-
-            <p:commandLink label="Vagas" value="Vagas" action="vaga.xhtml" icon="pi pi-calendar" style="color:black;" />
-
-            <p:commandLink label="Solicitantes" value="Solicitantes" action="solicitante.xhtml" icon="pi pi-users" style="color:black;" />
-
-            <p:commandLink label="Agendamentos" value="Agendamentos" action="agendamento.xhtml" icon="pi pi-clock" style="color:black;" />
-        </p:panel>
-    </h:form>
-</h:body>
+    <h:head>
+        <title>Menu Principal</title>
+        <!-- Adicionar o favicon -->
+        <link rel="icon" href="#{facesContext.externalContext.requestContextPath}/resources/favicon.ico" type="image/x-icon" />
+        <style>
+            body {
+                background-color: #FFFFE0; /* Cor de fundo amarelo clarinho */
+            }
+            .header, .footer {
+                background-color: #FFA500; /* Cor laranja claro para cabeçalho e rodapé */
+                text-align: center;
+                padding: 10px;
+                color: black; /* Texto preto para contraste */
+            }
+            .conteudo {
+                text-align: center;
+                padding: 20px;
+            }
+            .menu {
+                background-color: #FFFFE0; /* Cor de fundo amarelo clarinho */
+                padding: 20px;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+            }
+            .button-style {
+                background-color: #FFFF00; /* Amarelo */
+                color: black; /* Texto preto para contraste */
+                border: none;
+                padding: 10px 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+                border-radius: 8px;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <div class="header">
+            <p>Menu Principal</p>
+        </div>
+        <div class="conteudo">
+            <div class="menu">
+                <p>
+                    <p:commandButton value="Vagas" action="vaga.xhtml" styleClass="button-style" />
+                    <p:commandButton value="Solicitantes" action="solicitante.xhtml" styleClass="button-style" />
+                    <p:commandButton value="Agendamentos" action="agendamento.xhtml" styleClass="button-style" />
+                </p>
+                <p>
+                    <p:commandButton value="Sair" action="/logout" styleClass="button-style" />
+                </p>
+            </div>
+        </div>
+        <div class="footer">
+            <p>Rodapé</p>
+        </div>
+    </h:body>
 </html>

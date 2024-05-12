@@ -14,7 +14,7 @@ public class Agendamento {
     private Long id;
 
     private LocalDate data;
-    private String hora; // Adicionado o campo hora
+    private String hora; // Alteração do tipo de dado para String
 
     // Getters e Setters
     public Long getId() {
@@ -41,4 +41,3 @@ public class Agendamento {
         this.hora = hora;
     }
 }
-

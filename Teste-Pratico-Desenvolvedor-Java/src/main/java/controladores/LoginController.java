@@ -7,28 +7,37 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import servicos.UserService;
+
+import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 
 @Controller
 public class LoginController {
 
     @Autowired
-    private UserService userService; // Injeção do UserService
+    private UserService userService;
 
-    @GetMapping("/login")
+    @GetMapping("/login.xhtml")
     public String mostrarLoginFormulario() {
         return "login";
     }
 
     @PostMapping("/login")
-    public String processarLogin(@RequestParam String usuario, @RequestParam String senha, RedirectAttributes redirectAttrs) {
+    public String processarLogin(@RequestParam String usuario, @RequestParam String senha, HttpSession session, RedirectAttributes redirectAttrs) {
         boolean sucesso = userService.authenticate(usuario, senha);
         if (sucesso) {
-            return "redirect:/pagina-principal";
+            session.setAttribute("usuarioLogado", usuario);
+            return "redirect:/menu.xhtml";
         } else {
             redirectAttrs.addFlashAttribute("messages", Arrays.asList("Login falhou. Tente novamente."));
-            return "redirect:/login";
+            return "redirect:/login.xhtml";
         }
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.removeAttribute("usuarioLogado");
+        return "redirect:/login.xhtml";
     }
 
     @GetMapping("/recuperar-senha")

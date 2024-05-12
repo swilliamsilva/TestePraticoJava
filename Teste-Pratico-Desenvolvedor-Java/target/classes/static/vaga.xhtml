@@ -29,6 +29,10 @@ template="/templates/layout.xhtml">
             <p:inputNumber id="quantidade" value="#{vagaBean.vaga.quantidade}" minValue="1" />
 
             <p:commandButton value="Salvar" action="#{vagaBean.salvar}" update="vagaForm, listaVagas" />
+            <p:commandButton value="Alterar" action="#{vagaBean.alterar}" update="vagaForm, listaVagas" />
+            <p:commandButton value="Deletar" action="#{vagaBean.deletar}" update="vagaForm, listaVagas" />
+            <p:commandButton value="Consultar" action="#{vagaBean.consultar}" update="vagaForm, listaVagas" />
+            <p:commandButton value="Listar" action="#{vagaBean.listar}" update="vagaForm, listaVagas" />
         </p:panel>
 
         <h2>Lista de Vagas</h2>

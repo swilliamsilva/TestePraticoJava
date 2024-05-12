@@ -1,7 +1,5 @@
 /* caminho: /src/main/resources/static/css/estilos.css */
 
-@CHARSET "ISO-8859-1";
-
 .ui-layout-north {
     z-index: 20 !important;
     overflow: visible !important;
@@ -23,4 +21,28 @@
 .amarelo-claro {
     background-color: #FFFF00; /* Amarelo claro, ajuste o código de cor conforme necessário */
     color: #000; /* Texto preto para contraste */
+}
+.input-border {
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+    width: 200px; /* Ajuste conforme necessário */
+    display: block;
+    margin-bottom: 10px;
+}
+
+.amarelo-claro {
+    background-color: #FFFFE0; /* Cor de fundo amarelo clarinho */
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.messages {
+    border: 1px solid red;
+    background-color: #FFD2D2;
+    padding: 10px;
+    border-radius: 5px;
+    color: darkred;
+    margin-bottom: 10px
 }
